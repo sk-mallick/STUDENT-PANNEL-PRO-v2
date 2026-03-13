@@ -6,7 +6,7 @@
 //
 //  1. Go to https://script.google.com and create a new project.
 //
-//  2. Your Google Sheet ID: 1PcgVZrGEwjuJa0lhnptAtI-e1_33jZ97Gpwt-3OFC0Y
+//  2. Your Google Sheet ID: 1fyRDAfRltfuUDWFgGZQbf97pbnxzDBMBdKEkZHOkIUE
 //
 //  3. In your Google Sheet, create THREE sheets (tabs):
 //
@@ -119,7 +119,8 @@ function _getSheetByGid(ss, gid) {
  * Falls back to name-based lookup for other sheets.
  */
 function _getRegSheet(ss) {
-    return _getSheetByGid(ss, SHEET_GID.REGISTRATION);
+    // Prefer pinned GID when available, but fall back to tab name for new sheets.
+    return _getSheetByGid(ss, SHEET_GID.REGISTRATION) || ss.getSheetByName('REGISTRATION');
 }
 
 // ================================================================
@@ -834,7 +835,7 @@ function createStudent(studentId, studentName, email, plainPassword) {
     email = String(email).trim().toLowerCase();
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = _getRegSheet(ss);
-    if (!sheet) throw new Error('REGISTRATION sheet not found (check SHEET_GID.REGISTRATION)');
+    if (!sheet) throw new Error('REGISTRATION sheet not found (check tab name or SHEET_GID.REGISTRATION)');
 
     // Check for existing email (targeted)
     const existingEmail = _findRowByColumn(sheet, REG_COL.EMAIL, email);

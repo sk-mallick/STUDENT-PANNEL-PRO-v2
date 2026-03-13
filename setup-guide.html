@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backend Setup Guide — EnglishJibi Classes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Backend Setup Guide — EnglishJibi Classes</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet">
+        <style>
         :root {
             --bg: #020617;
             --surface: #0f172a;
@@ -574,344 +575,409 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
     </style>
-</head>
+    </head>
 
-<body>
-    <div class="container">
+    <body>
+        <div class="container">
 
-        <!-- Header -->
-        <div class="guide-header">
-            <div class="badge">
-                <div class="badge-dot"></div>
-                <span class="badge-text">Setup Guide</span>
+            <!-- Header -->
+            <div class="guide-header">
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    <span class="badge-text">Setup Guide</span>
+                </div>
+                <h1>Backend <span>Deployment</span> Checklist</h1>
+                <p>Follow each step to connect your Student Panel to Google
+                    Sheets. Check off each step as you complete
+                    it.</p>
             </div>
-            <h1>Backend <span>Deployment</span> Checklist</h1>
-            <p>Follow each step to connect your Student Panel to Google Sheets. Check off each step as you complete
-                it.</p>
-        </div>
 
-        <!-- Progress -->
-        <div class="progress-section">
-            <div class="progress-header">
-                <span class="progress-label">Overall Progress</span>
-                <span class="progress-count" id="progress-text">0 <span>/ 7 Steps</span></span>
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-label">Overall Progress</span>
+                    <span class="progress-count" id="progress-text">0 <span>/ 7
+                            Steps</span></span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
             </div>
-            <div class="progress-track">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-        </div>
 
-        <!-- ═══════════════ STEPS ═══════════════ -->
+            <!-- ═══════════════ STEPS ═══════════════ -->
 
-        <!-- Step 1 -->
-        <div class="step-card open" data-step="1">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 1 -->
+            <div class="step-card open" data-step="1">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">01</div>
+                    <div class="step-title">Open Your Google Sheet</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">01</div>
-                <div class="step-title">Open Your Google Sheet</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                </div>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>Open your Google Sheet in a browser. This is where
+                            all student data, results, and login
+                            information will be stored.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>Open your browser (Chrome
+                                    recommended)</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Go to: <a
+                                        href="https://docs.google.com/spreadsheets/d/1fyRDAfRltfuUDWFgGZQbf97pbnxzDBMBdKEkZHOkIUE/edit"
+                                        target="_blank">Your Google Sheet
+                                        ↗</a></span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span>Make sure you're signed into the Google
+                                    account that <strong>owns</strong> this
+                                    sheet</span>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>Open your Google Sheet in a browser. This is where all student data, results, and login
-                        information will be stored.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>Open your browser (Chrome recommended)</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Go to: <a
-                                    href="https://docs.google.com/spreadsheets/d/1PcgVZrGEwjuJa0lhnptAtI-e1_33jZ97Gpwt-3OFC0Y/edit"
-                                    target="_blank">Your Google Sheet ↗</a></span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span>Make sure you're signed into the Google account that <strong>owns</strong> this
-                                sheet</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
 
-        <!-- Step 2 -->
-        <div class="step-card" data-step="2">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 2 -->
+            <div class="step-card" data-step="2">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">02</div>
+                    <div class="step-title">Create "REGISTRATION" Tab</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">02</div>
-                <div class="step-title">Create "REGISTRATION" Tab</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
                 </div>
-            </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>This sheet stores all student accounts — login credentials, approval status, and roles.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>At the <strong>bottom of Google Sheets</strong>, click the <em>+</em> button to create
-                                a new tab</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Double-click the new tab name and rename it to exactly: <span
-                                    class="tag tag-yellow">REGISTRATION</span></span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span>In <strong>Row 1</strong>, type these column headers (one per cell, A1 through
-                                I1):</span>
-                        </li>
-                    </ol>
-                    <table class="schema-table">
-                        <tr>
-                            <th>A1</th>
-                            <th>B1</th>
-                            <th>C1</th>
-                            <th>D1</th>
-                            <th>E1</th>
-                            <th>F1</th>
-                            <th>G1</th>
-                            <th>H1</th>
-                            <th>I1</th>
-                        </tr>
-                        <tr>
-                            <td>studentId</td>
-                            <td>studentName</td>
-                            <td>email</td>
-                            <td>passwordHash</td>
-                            <td>salt</td>
-                            <td>status</td>
-                            <td>role</td>
-                            <td>createdAt</td>
-                            <td>lastLogin</td>
-                        </tr>
-                    </table>
-                    <div class="warning-box">
-                        <span class="icon">⚠️</span>
-                        <p><strong>Important:</strong> Do NOT manually fill data rows. The script will hash passwords
-                            and fill rows automatically. Only type the headers in Row 1.</p>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>This sheet stores all student accounts — login
+                            credentials, approval status, and roles.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>At the <strong>bottom of Google
+                                        Sheets</strong>, click the <em>+</em>
+                                    button to create
+                                    a new tab</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Double-click the new tab name and rename
+                                    it to exactly: <span
+                                        class="tag tag-yellow">REGISTRATION</span></span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span>In <strong>Row 1</strong>, type these
+                                    column headers (one per cell, A1 through
+                                    I1):</span>
+                            </li>
+                        </ol>
+                        <table class="schema-table">
+                            <tr>
+                                <th>A1</th>
+                                <th>B1</th>
+                                <th>C1</th>
+                                <th>D1</th>
+                                <th>E1</th>
+                                <th>F1</th>
+                                <th>G1</th>
+                                <th>H1</th>
+                                <th>I1</th>
+                            </tr>
+                            <tr>
+                                <td>studentId</td>
+                                <td>studentName</td>
+                                <td>email</td>
+                                <td>passwordHash</td>
+                                <td>salt</td>
+                                <td>status</td>
+                                <td>role</td>
+                                <td>createdAt</td>
+                                <td>lastLogin</td>
+                            </tr>
+                        </table>
+                        <div class="warning-box">
+                            <span class="icon">⚠️</span>
+                            <p><strong>Important:</strong> Do NOT manually fill
+                                data rows. The script will hash passwords
+                                and fill rows automatically. Only type the
+                                headers in Row 1.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="step-card" data-step="3">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 3 -->
+            <div class="step-card" data-step="3">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">03</div>
+                    <div class="step-title">Create "RESULTS" Tab</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">03</div>
-                <div class="step-title">Create "RESULTS" Tab</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                </div>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>This sheet stores all practice set results — scores,
+                            timestamps, and performance data for every
+                            student.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>Click the <em>+</em> button again to
+                                    create another new tab</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Rename it to exactly: <span
+                                        class="tag tag-blue">RESULTS</span></span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span>In <strong>Row 1</strong>, type these
+                                    column headers (A1 through K1):</span>
+                            </li>
+                        </ol>
+                        <table class="schema-table">
+                            <tr>
+                                <th>A1</th>
+                                <th>B1</th>
+                                <th>C1</th>
+                                <th>D1</th>
+                                <th>E1</th>
+                                <th>F1</th>
+                                <th>G1</th>
+                                <th>H1</th>
+                                <th>I1</th>
+                                <th>J1</th>
+                                <th>K1</th>
+                            </tr>
+                            <tr>
+                                <td>studentId</td>
+                                <td>studentName</td>
+                                <td>subject</td>
+                                <td>level</td>
+                                <td>set</td>
+                                <td>score</td>
+                                <td>total</td>
+                                <td>percentage</td>
+                                <td>timeTaken</td>
+                                <td>date</td>
+                                <td>timestamp</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>This sheet stores all practice set results — scores, timestamps, and performance data for every
-                        student.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>Click the <em>+</em> button again to create another new tab</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Rename it to exactly: <span class="tag tag-blue">RESULTS</span></span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span>In <strong>Row 1</strong>, type these column headers (A1 through K1):</span>
-                        </li>
-                    </ol>
-                    <table class="schema-table">
-                        <tr>
-                            <th>A1</th>
-                            <th>B1</th>
-                            <th>C1</th>
-                            <th>D1</th>
-                            <th>E1</th>
-                            <th>F1</th>
-                            <th>G1</th>
-                            <th>H1</th>
-                            <th>I1</th>
-                            <th>J1</th>
-                            <th>K1</th>
-                        </tr>
-                        <tr>
-                            <td>studentId</td>
-                            <td>studentName</td>
-                            <td>subject</td>
-                            <td>level</td>
-                            <td>set</td>
-                            <td>score</td>
-                            <td>total</td>
-                            <td>percentage</td>
-                            <td>timeTaken</td>
-                            <td>date</td>
-                            <td>timestamp</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="step-card" data-step="4">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 4 -->
+            <div class="step-card" data-step="4">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">04</div>
+                    <div class="step-title">Create "STUDENT_DETAILS" Tab</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">04</div>
-                <div class="step-title">Create "STUDENT_DETAILS" Tab</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                </div>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>This sheet stores student profile info — school,
+                            class, guardian details, and profile photos.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>Click the <em>+</em> button once more for
+                                    the last tab</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Rename it to exactly: <span
+                                        class="tag tag-emerald">STUDENT_DETAILS</span></span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span>In <strong>Row 1</strong>, type these
+                                    column headers (A1 through I1):</span>
+                            </li>
+                        </ol>
+                        <table class="schema-table">
+                            <tr>
+                                <th>A1</th>
+                                <th>B1</th>
+                                <th>C1</th>
+                                <th>D1</th>
+                                <th>E1</th>
+                                <th>F1</th>
+                                <th>G1</th>
+                                <th>H1</th>
+                                <th>I1</th>
+                            </tr>
+                            <tr>
+                                <td>studentId</td>
+                                <td>studentName</td>
+                                <td>schoolName</td>
+                                <td>className</td>
+                                <td>profileImageURL</td>
+                                <td>guardianName</td>
+                                <td>contactNumber</td>
+                                <td>address</td>
+                                <td>createdAt</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>This sheet stores student profile info — school, class, guardian details, and profile photos.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>Click the <em>+</em> button once more for the last tab</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Rename it to exactly: <span class="tag tag-emerald">STUDENT_DETAILS</span></span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span>In <strong>Row 1</strong>, type these column headers (A1 through I1):</span>
-                        </li>
-                    </ol>
-                    <table class="schema-table">
-                        <tr>
-                            <th>A1</th>
-                            <th>B1</th>
-                            <th>C1</th>
-                            <th>D1</th>
-                            <th>E1</th>
-                            <th>F1</th>
-                            <th>G1</th>
-                            <th>H1</th>
-                            <th>I1</th>
-                        </tr>
-                        <tr>
-                            <td>studentId</td>
-                            <td>studentName</td>
-                            <td>schoolName</td>
-                            <td>className</td>
-                            <td>profileImageURL</td>
-                            <td>guardianName</td>
-                            <td>contactNumber</td>
-                            <td>address</td>
-                            <td>createdAt</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
 
-        <!-- Step 5 -->
-        <div class="step-card" data-step="5">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 5 -->
+            <div class="step-card" data-step="5">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">05</div>
+                    <div class="step-title">Paste Script into Apps Script
+                        Editor</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">05</div>
-                <div class="step-title">Paste Script into Apps Script Editor</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
                 </div>
-            </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>This connects your Google Sheet to the Student Panel by creating a backend API.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>In your Google Sheet, click <strong>Extensions</strong> in the top menu bar</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Click <strong>Apps Script</strong> — a new browser tab will open with the Script
-                                Editor</span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span><strong>Delete all existing code</strong> in the editor (select all → delete)</span>
-                        </li>
-                        <li>
-                            <span class="num">4</span>
-                            <span>Open the file <span class="tag tag-yellow">backend/google-apps-script.js</span> from
-                                your project folder</span>
-                        </li>
-                        <li>
-                            <span class="num">5</span>
-                            <span><strong>Copy the entire file contents</strong> (Ctrl+A → Ctrl+C)</span>
-                        </li>
-                        <li>
-                            <span class="num">6</span>
-                            <span><strong>Paste</strong> it into the Apps Script editor (Ctrl+V)</span>
-                        </li>
-                        <li>
-                            <span class="num">7</span>
-                            <span>Click the <strong>Save</strong> button (💾 icon) or press Ctrl+S</span>
-                        </li>
-                    </ol>
-                    <p>Now add a helper function to create your first student account. <strong>Scroll to the very bottom
-                            of the script</strong> and add this code:</p>
-                    <div class="code-block">
-                        <span class="code-label">Add at bottom</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                        <pre>function addTestStudent() {
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>This connects your Google Sheet to the Student Panel
+                            by creating a backend API.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>In your Google Sheet, click
+                                    <strong>Extensions</strong> in the top menu
+                                    bar</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Click <strong>Apps Script</strong> — a new
+                                    browser tab will open with the Script
+                                    Editor</span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span><strong>Delete all existing code</strong>
+                                    in the editor (select all → delete)</span>
+                            </li>
+                            <li>
+                                <span class="num">4</span>
+                                <span>Open the file <span
+                                        class="tag tag-yellow">backend/google-apps-script.js</span>
+                                    from
+                                    your project folder</span>
+                            </li>
+                            <li>
+                                <span class="num">5</span>
+                                <span><strong>Copy the entire file
+                                        contents</strong> (Ctrl+A →
+                                    Ctrl+C)</span>
+                            </li>
+                            <li>
+                                <span class="num">6</span>
+                                <span><strong>Paste</strong> it into the Apps
+                                    Script editor (Ctrl+V)</span>
+                            </li>
+                            <li>
+                                <span class="num">7</span>
+                                <span>Click the <strong>Save</strong> button (💾
+                                    icon) or press Ctrl+S</span>
+                            </li>
+                        </ol>
+                        <p>Now add a helper function to create your first
+                            student account. <strong>Scroll to the very bottom
+                                of the script</strong> and add this code:</p>
+                        <div class="code-block">
+                            <span class="code-label">Add at bottom</span>
+                            <button class="copy-btn"
+                                onclick="copyCode(this)">Copy</button>
+                            <pre>function addTestStudent() {
     createStudent(
         'STU001',
         'Your Name Here',
@@ -919,222 +985,268 @@
         'your_password_here'
     );
 }</pre>
+                        </div>
+                        <div class="warning-box">
+                            <span class="icon">✏️</span>
+                            <p>Replace <strong>'Your Name Here'</strong>,
+                                <strong>'your.email@gmail.com'</strong>, and
+                                <strong>'your_password_here'</strong> with your
+                                actual name, email, and desired password.
+                            </p>
+                        </div>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">8</span>
+                                <span>Click <strong>Save</strong> again after
+                                    adding the function</span>
+                            </li>
+                            <li>
+                                <span class="num">9</span>
+                                <span>In the <strong>function dropdown</strong>
+                                    (near the ▶ Run button at the top), select
+                                    <em>addTestStudent</em></span>
+                            </li>
+                            <li>
+                                <span class="num">10</span>
+                                <span>Click the <strong>▶ Run</strong>
+                                    button</span>
+                            </li>
+                            <li>
+                                <span class="num">11</span>
+                                <span>A popup will ask for
+                                    <strong>permissions</strong> — click
+                                    <em>"Review
+                                        Permissions"</em></span>
+                            </li>
+                            <li>
+                                <span class="num">12</span>
+                                <span>Select your Google account → click
+                                    <em>"Advanced"</em> → click <em>"Go to
+                                        (project
+                                        name)"</em> → click
+                                    <em>"Allow"</em></span>
+                            </li>
+                            <li>
+                                <span class="num">13</span>
+                                <span>The script will run. Go back to your
+                                    <strong>Google Sheet</strong> and check the
+                                    <em>REGISTRATION</em> tab — you should see
+                                    your student entry with a hashed
+                                    password!</span>
+                            </li>
+                        </ol>
                     </div>
-                    <div class="warning-box">
-                        <span class="icon">✏️</span>
-                        <p>Replace <strong>'Your Name Here'</strong>, <strong>'your.email@gmail.com'</strong>, and
-                            <strong>'your_password_here'</strong> with your actual name, email, and desired password.
-                        </p>
-                    </div>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">8</span>
-                            <span>Click <strong>Save</strong> again after adding the function</span>
-                        </li>
-                        <li>
-                            <span class="num">9</span>
-                            <span>In the <strong>function dropdown</strong> (near the ▶ Run button at the top), select
-                                <em>addTestStudent</em></span>
-                        </li>
-                        <li>
-                            <span class="num">10</span>
-                            <span>Click the <strong>▶ Run</strong> button</span>
-                        </li>
-                        <li>
-                            <span class="num">11</span>
-                            <span>A popup will ask for <strong>permissions</strong> — click <em>"Review
-                                    Permissions"</em></span>
-                        </li>
-                        <li>
-                            <span class="num">12</span>
-                            <span>Select your Google account → click <em>"Advanced"</em> → click <em>"Go to (project
-                                    name)"</em> → click <em>"Allow"</em></span>
-                        </li>
-                        <li>
-                            <span class="num">13</span>
-                            <span>The script will run. Go back to your <strong>Google Sheet</strong> and check the
-                                <em>REGISTRATION</em> tab — you should see your student entry with a hashed
-                                password!</span>
-                        </li>
-                    </ol>
                 </div>
             </div>
-        </div>
 
-        <!-- Step 6 -->
-        <div class="step-card" data-step="6">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 6 -->
+            <div class="step-card" data-step="6">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">06</div>
+                    <div class="step-title">Deploy as Web App</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">06</div>
-                <div class="step-title">Deploy as Web App</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
                 </div>
-            </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>Deploying as a Web App gives your script a public URL that the Student Panel can communicate
-                        with.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>In the Apps Script editor, click <strong>Deploy</strong> (blue button, top right)
-                            </span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Click <strong>"New deployment"</strong></span>
-                        </li>
-                        <li>
-                            <span class="num">3</span>
-                            <span>Click the <strong>⚙️ gear icon</strong> next to "Select type" → choose <em>"Web
-                                    app"</em></span>
-                        </li>
-                        <li>
-                            <span class="num">4</span>
-                            <span>Fill in the settings:</span>
-                        </li>
-                    </ol>
-                    <table class="schema-table">
-                        <tr>
-                            <th>Setting</th>
-                            <th>Value</th>
-                        </tr>
-                        <tr>
-                            <td>Description</td>
-                            <td>EnglishJibi Backend v1</td>
-                        </tr>
-                        <tr>
-                            <td>Execute as</td>
-                            <td>Me (your email)</td>
-                        </tr>
-                        <tr>
-                            <td>Who has access</td>
-                            <td>Anyone</td>
-                        </tr>
-                    </table>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">5</span>
-                            <span>Click <strong>"Deploy"</strong></span>
-                        </li>
-                        <li>
-                            <span class="num">6</span>
-                            <span>A popup will show your <strong>Web App URL</strong> — it looks like:<br>
-                                <code
-                                    style="color: var(--blue); font-size:11px;">https://script.google.com/macros/s/AKfycbx.../exec</code>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="num">7</span>
-                            <span><strong>COPY THIS URL</strong> — you need it for the next step. Click the copy icon or
-                                select and Ctrl+C.</span>
-                        </li>
-                    </ol>
-                    <div class="warning-box">
-                        <span class="icon">📋</span>
-                        <p>Keep this URL safe! If you lose it, go to Deploy → Manage deployments to find it again.</p>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>Deploying as a Web App gives your script a public URL
+                            that the Student Panel can communicate
+                            with.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>In the Apps Script editor, click
+                                    <strong>Deploy</strong> (blue button, top
+                                    right)
+                                </span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Click
+                                    <strong>"New deployment"</strong></span>
+                            </li>
+                            <li>
+                                <span class="num">3</span>
+                                <span>Click the <strong>⚙️ gear icon</strong>
+                                    next to "Select type" → choose <em>"Web
+                                        app"</em></span>
+                            </li>
+                            <li>
+                                <span class="num">4</span>
+                                <span>Fill in the settings:</span>
+                            </li>
+                        </ol>
+                        <table class="schema-table">
+                            <tr>
+                                <th>Setting</th>
+                                <th>Value</th>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td>EnglishJibi Backend v1</td>
+                            </tr>
+                            <tr>
+                                <td>Execute as</td>
+                                <td>Me (your email)</td>
+                            </tr>
+                            <tr>
+                                <td>Who has access</td>
+                                <td>Anyone</td>
+                            </tr>
+                        </table>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">5</span>
+                                <span>Click <strong>"Deploy"</strong></span>
+                            </li>
+                            <li>
+                                <span class="num">6</span>
+                                <span>A popup will show your <strong>Web App
+                                        URL</strong> — it looks like:<br>
+                                    <code
+                                        style="color: var(--blue); font-size:11px;">https://script.google.com/macros/s/AKfycbx.../exec</code>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="num">7</span>
+                                <span><strong>COPY THIS URL</strong> — you need
+                                    it for the next step. Click the copy icon or
+                                    select and Ctrl+C.</span>
+                            </li>
+                        </ol>
+                        <div class="warning-box">
+                            <span class="icon">📋</span>
+                            <p>Keep this URL safe! If you lose it, go to Deploy
+                                → Manage deployments to find it again.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Step 7 -->
-        <div class="step-card" data-step="7">
-            <div class="step-header" onclick="toggleStep(this)">
-                <label class="step-check" onclick="event.stopPropagation()">
-                    <input type="checkbox" onchange="updateProgress()">
-                    <div class="checkmark">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            <!-- Step 7 -->
+            <div class="step-card" data-step="7">
+                <div class="step-header" onclick="toggleStep(this)">
+                    <label class="step-check" onclick="event.stopPropagation()">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="checkmark">
+                            <svg fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="3">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="step-number">07</div>
+                    <div class="step-title">Connect Your App (Set Backend
+                        URL)</div>
+                    <div class="step-toggle">
+                        <svg width="14" height="14" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-                </label>
-                <div class="step-number">07</div>
-                <div class="step-title">Connect Your App (Set Backend URL)</div>
-                <div class="step-toggle">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
+                </div>
+                <div class="step-body">
+                    <div class="step-content">
+                        <p>This is the final connection step. You'll paste the
+                            Web App URL into your project code so the
+                            login page can talk to Google Sheets.</p>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">1</span>
+                                <span>Open the file <span
+                                        class="tag tag-yellow">backend/api.js</span>
+                                    in your code
+                                    editor</span>
+                            </li>
+                            <li>
+                                <span class="num">2</span>
+                                <span>Find <strong>Line 9</strong> — it
+                                    currently says:</span>
+                            </li>
+                        </ol>
+                        <div class="code-block">
+                            <span class="code-label">Current (Line 9)</span>
+                            <pre>const BACKEND_URL = null;</pre>
+                        </div>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">3</span>
+                                <span>Replace it with your Web App URL from Step
+                                    6:</span>
+                            </li>
+                        </ol>
+                        <div class="code-block">
+                            <span class="code-label">Replace with</span>
+                            <pre>const BACKEND_URL = 'https://script.google.com/macros/s/YOUR_URL_HERE/exec';</pre>
+                        </div>
+                        <ol class="sub-steps">
+                            <li>
+                                <span class="num">4</span>
+                                <span><strong>Save</strong> the file
+                                    (Ctrl+S)</span>
+                            </li>
+                            <li>
+                                <span class="num">5</span>
+                                <span>Open <strong>login.html</strong> in your
+                                    browser</span>
+                            </li>
+                            <li>
+                                <span class="num">6</span>
+                                <span>Enter the <strong>email and
+                                        password</strong> you set in Step
+                                    5</span>
+                            </li>
+                            <li>
+                                <span class="num">7</span>
+                                <span>You should be logged in and redirected to
+                                    the dashboard! 🎉</span>
+                            </li>
+                        </ol>
+                        <div class="warning-box">
+                            <span class="icon">🔄</span>
+                            <p>If you ever update the Apps Script code and
+                                re-deploy, the URL will change. You must update
+                                <strong>api.js</strong> with the new URL each
+                                time.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="step-body">
-                <div class="step-content">
-                    <p>This is the final connection step. You'll paste the Web App URL into your project code so the
-                        login page can talk to Google Sheets.</p>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">1</span>
-                            <span>Open the file <span class="tag tag-yellow">backend/api.js</span> in your code
-                                editor</span>
-                        </li>
-                        <li>
-                            <span class="num">2</span>
-                            <span>Find <strong>Line 9</strong> — it currently says:</span>
-                        </li>
-                    </ol>
-                    <div class="code-block">
-                        <span class="code-label">Current (Line 9)</span>
-                        <pre>const BACKEND_URL = null;</pre>
-                    </div>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">3</span>
-                            <span>Replace it with your Web App URL from Step 6:</span>
-                        </li>
-                    </ol>
-                    <div class="code-block">
-                        <span class="code-label">Replace with</span>
-                        <pre>const BACKEND_URL = 'https://script.google.com/macros/s/YOUR_URL_HERE/exec';</pre>
-                    </div>
-                    <ol class="sub-steps">
-                        <li>
-                            <span class="num">4</span>
-                            <span><strong>Save</strong> the file (Ctrl+S)</span>
-                        </li>
-                        <li>
-                            <span class="num">5</span>
-                            <span>Open <strong>login.html</strong> in your browser</span>
-                        </li>
-                        <li>
-                            <span class="num">6</span>
-                            <span>Enter the <strong>email and password</strong> you set in Step 5</span>
-                        </li>
-                        <li>
-                            <span class="num">7</span>
-                            <span>You should be logged in and redirected to the dashboard! 🎉</span>
-                        </li>
-                    </ol>
-                    <div class="warning-box">
-                        <span class="icon">🔄</span>
-                        <p>If you ever update the Apps Script code and re-deploy, the URL will change. You must update
-                            <strong>api.js</strong> with the new URL each time.
-                        </p>
-                    </div>
-                </div>
+
+            <!-- Completion banner -->
+            <div class="completion-banner" id="completion-banner">
+                <h2>🎉 Setup Complete!</h2>
+                <p>Your Student Panel is now connected to Google Sheets.
+                    Students can log in, practice, and all results will
+                    be saved automatically.</p>
             </div>
+
         </div>
 
-        <!-- Completion banner -->
-        <div class="completion-banner" id="completion-banner">
-            <h2>🎉 Setup Complete!</h2>
-            <p>Your Student Panel is now connected to Google Sheets. Students can log in, practice, and all results will
-                be saved automatically.</p>
-        </div>
-
-    </div>
-
-    <!-- ═══════════════ SCRIPT ═══════════════ -->
-    <script>
+        <!-- ═══════════════ SCRIPT ═══════════════ -->
+        <script>
         // Toggle step expand/collapse
         function toggleStep(header) {
             const card = header.closest('.step-card');
@@ -1206,6 +1318,6 @@
             });
         })();
     </script>
-</body>
+    </body>
 
 </html>
