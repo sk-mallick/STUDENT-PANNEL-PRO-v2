@@ -1,6 +1,6 @@
 # Project Documentation — EnglishJibi Student Panel Pro
 
-> **Version:** 1.0  
+> **Version:** 1.0 (patched March 2026)  
 > **Last Updated:** March 2026  
 > **Author:** Subham Kumar Mallick  
 > **Organization:** EnglishJibi Classes
@@ -276,7 +276,9 @@ Client validation → POST to backend (action: 'login')
         └── Success:
               ├── Server generates UUID session token
               ├── Stores token in REGISTRATION sheet
-              ├── Returns: { studentId, studentName, email, activeSessionToken }
+              ├── Returns: { studentId, studentName, email, accessToken,
+              │            schoolName, className, contactType, contactNumber,
+              │            profileImageUrl }
               │
               ▼
             Client creates local session in localStorage
@@ -565,9 +567,16 @@ All API communication goes through a single Google Apps Script Web App endpoint.
   "studentId": "STU_A1B2C3D4E5F6",
   "studentName": "Rahul Sharma",
   "email": "rahul@school.com",
-  "activeSessionToken": "550e8400-e29b-41d4-a716-446655440000"
+  "accessToken": "550e8400-e29b-41d4-a716-446655440000",
+  "schoolName": "DPS Public School",
+  "className": "8",
+  "contactType": "parents",
+  "contactNumber": "9876543210",
+  "profileImageUrl": ""
 }
 ```
+
+> **Note:** The token field is `accessToken` (not `activeSessionToken`). Frontend code reads `result.accessToken` with fallback to `result.activeSessionToken` for backward compatibility.
 
 **Error Responses:**
 
@@ -1102,6 +1111,14 @@ All API communication goes through a single Google Apps Script Web App endpoint.
 3. **Test locally** using a live server (e.g., VS Code Live Server)
 4. **Validate** with browser DevTools (Network tab for API calls, Console for JS errors)
 5. **Deploy** the fix to the hosting platform
+
+## 14.7 Known Bug Fixes & Patch Log
+
+| Date | File | Bug | Root Cause | Fix Applied |
+|------|------|-----|------------|-------------|
+| March 2026 | `js/login.js` | **Instant logout after login** — user appeared logged in for a fraction of a second then was redirected back to `login.html` | `login.js` read `result.activeSessionToken` but the backend returns the token as `accessToken`. The field was `undefined`, so `createSession()` saved `activeSessionToken: undefined`. On the next page, `auth-guard.js`'s `getSession()` guard rejected the session (falsy token check) and immediately redirected to login. | Changed token read to `result.activeSessionToken \|\| result.accessToken` in `createSession()` call. |
+| March 2026 | `js/login.js` | **Empty school/class/photo in profile** — student profile always showed blank school, class, and photo after login | Backend returns `schoolName`, `className`, `profileImageUrl` but `login.js` was reading `result.school`, `result.class`, `result.profilePhotoURL` (v2 idealized names that don't exist in the actual response). | Added field-name fallbacks: `result.class \|\| result.className`, `result.school \|\| result.schoolName`, `result.profilePhotoURL \|\| result.profileImageUrl`. |
+| March 2026 | `backend/api.js` | **Backend URL update** — redeployed Google Apps Script requires new Web App URL | New deployment generates a new URL. | Updated `BACKEND_URL` constant to new deployment URL. |
 
 ---
 

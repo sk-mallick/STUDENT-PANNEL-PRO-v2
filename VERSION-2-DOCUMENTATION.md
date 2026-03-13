@@ -1,6 +1,6 @@
 # EnglishJibi Student Panel Pro — System Documentation
 
-> **Version:** 2.0
+> **Version:** 2.0 (patched March 2026)
 > **Previous Version:** 1.0
 > **Last Updated:** March 2026
 > **Author:** Subham Kumar Mallick
@@ -962,7 +962,7 @@ All API communication uses a single Google Apps Script Web App endpoint. The `ac
 | **Action** | `login` |
 | **Request Body** | `{ "action": "login", "email": "student@gmail.com", "password": "pass123" }` |
 
-**Success Response (v2):**
+**Success Response (v2) — actual fields returned by backend:**
 ```json
 {
   "success": true,
@@ -970,16 +970,15 @@ All API communication uses a single Google Apps Script Web App endpoint. The `ac
   "studentName": "Rahul Sharma",
   "email": "rahul@gmail.com",
   "accessToken": "550e8400-e29b-41d4-a716-446655440000",
-  "class": "8",
-  "school": "DPS Public School",
-  "gender": "Male",
-  "contactType": "Parent",
+  "schoolName": "DPS Public School",
+  "className": "8",
+  "contactType": "parents",
   "contactNumber": "9876543210",
-  "role": "student",
-  "registrationDate": "2026-03-12T10:30:00.000Z",
-  "profilePhotoURL": ""
+  "profileImageUrl": ""
 }
 ```
+
+> **Important — Field Name Aliases:** The backend returns `schoolName`, `className`, and `profileImageUrl`. Frontend code (`login.js`) maps these to the canonical internal names via fallbacks: `result.school || result.schoolName`, `result.class || result.className`, `result.profilePhotoURL || result.profileImageUrl`. This ensures backward and forward compatibility if the backend field names are normalized in future.
 
 **Error Codes:**
 
@@ -1449,12 +1448,17 @@ Student clicks [↻ Refresh] button
 | 14 | Backend POST | `login` action now returns full profile fields in response |
 | 15 | Concurrency | Documented design for 20–30 concurrent users; TextFinder + caching strategy |
 | 16 | Health Check | Version field added to health check response |
+| 17 | **Bug Fix** | `login.js` — token field mismatch (`activeSessionToken` → `accessToken || activeSessionToken`): caused instant logout after every login |
+| 18 | **Bug Fix** | `login.js` — profile field name fallbacks added for `schoolName`/`className`/`profileImageUrl` → prevents empty profile after login |
+| 19 | **Backend URL** | `api.js` `BACKEND_URL` updated to new Google Apps Script deployment |
 
 ## 15.3 Backward Compatibility Notes
 
 - **v1 students** (registered without new fields) will have empty values for `class`, `school`, `gender`, `contactType`, `contactNumber` — the UI must handle empty strings gracefully
 - **v1 RESULTS rows** (without `testId`) will have an empty column 11 — the backend and client must treat empty `testId` as valid (no duplicate check for legacy rows)
 - **`activeSessionToken`** (v1 column name) has been renamed to `accessToken` in v2 — the backend script must be updated to use the new column index map; the old `REG_COL.SESSION_TOKEN` reference must be replaced with `REG_COL.ACCESS_TOKEN`
+- **Token field mismatch (patched):** `login.js` previously read `result.activeSessionToken` which was `undefined` (backend returns `accessToken`). This caused an instant logout on every login. Fixed by reading `result.activeSessionToken || result.accessToken`.
+- **Profile field name mismatch (patched):** Backend returns `schoolName`, `className`, `profileImageUrl`. `login.js` now reads both variants via fallback to avoid empty profile data.
 - **`getProgress`** and **`getProfile`** GET endpoints are retained as legacy endpoints; new code should use `getStudentResults` which returns the richer v2 data shape
 
 ---
