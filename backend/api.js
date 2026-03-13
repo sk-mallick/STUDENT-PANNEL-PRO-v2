@@ -6,7 +6,7 @@
 
 // ── Configuration ────────────────────────────────────────────────
 // Set this URL to connect a real backend. Leave null for localStorage-only mode.
-const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxq-tJjvukQkdz7ay6rL9u-BApEIU_t6XaUB5lsuT9PWLq4Ciw5ex0kAFePLT_A_rrzhg/exec';
+const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbzNaoZ66po0cqj8lwfb1QeSkClsYGyCp4ACyQZrQnjrebdNvB8udcTUPhICt44pi4U1/exec';
 // Example: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
 // Example: 'https://yoursite.com/api/save-score.php'
 

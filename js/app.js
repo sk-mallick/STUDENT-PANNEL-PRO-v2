@@ -69,6 +69,34 @@ export function escapeHTML(str) {
     return div.innerHTML;
 }
 
+/**
+ * Format ISO/date-like values into a user-friendly local date/time string.
+ * Returns original text when parsing fails, so UI never shows "Invalid Date".
+ */
+export function formatDisplayDateTime(value, { includeTime = true } = {}) {
+    if (value === null || value === undefined || value === '') return '';
+
+    const dt = new Date(value);
+    if (Number.isNaN(dt.getTime())) return String(value);
+
+    const opts = includeTime
+        ? {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        }
+        : {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        };
+
+    return dt.toLocaleString(undefined, opts);
+}
+
 // ── Param validation constants ──────────────────────────────────
 const VALID_LEVELS = ['preprimary', 'primary', 'middle', 'high'];
 const VALID_PARAM_RE = /^[a-zA-Z0-9_-]+$/;
@@ -312,6 +340,8 @@ async function _initIndex() {
         const resumeWrap = document.getElementById('resume-wrap');
         if (!la || !resumeWrap) return;
 
+        const lastAttemptedLabel = escapeHTML(formatDisplayDateTime(la.date, { includeTime: true }) || '');
+
         resumeWrap.classList.remove('hidden');
         const scoreColor = la.percentage >= 80 ? 'text-emerald-400' : 'text-orange-400';
         const subjectDisplay = escapeHTML(la.subject.replace(/-/g, ' '));
@@ -326,7 +356,7 @@ async function _initIndex() {
                         Last Practiced Set
                     </span>
                 </div>
-                <span class="text-[10px] text-slate-600 font-medium">${escapeHTML(la.date || '')}</span>
+                <span class="text-[10px] text-slate-600 font-medium">${lastAttemptedLabel}</span>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between px-5 py-4 gap-3">
                 <div class="flex items-center gap-4 min-w-0">
@@ -926,7 +956,9 @@ async function _initLevel() {
                     : 'bg-slate-900 border-slate-800 hover:border-yellow-500/30');
         card.style.animationDelay = `${idx * 45}ms`;
 
-        const safeDate = isAttempted ? escapeHTML(result.date) : 'Not attempted';
+        const safeDate = isAttempted
+            ? escapeHTML(formatDisplayDateTime(result.date, { includeTime: true }))
+            : 'Not attempted';
 
         card.innerHTML = `
         ${isAttempted ? `

@@ -96,21 +96,24 @@ form.addEventListener('submit', async (e) => {
 
         if (result.success) {
             // Login successful — create session with server-issued token
-            await createSession(result.studentId, result.studentName, email, result.activeSessionToken);
+            // Backend may return token as 'activeSessionToken' or 'accessToken'
+            const sessionToken = result.activeSessionToken || result.accessToken;
+            await createSession(result.studentId, result.studentName, email, sessionToken);
 
             // Store full student profile data (V2: grammarhub_student_data)
+            // Backend may return 'className'/'schoolName'/'profileImageUrl' or 'class'/'school'/'profilePhotoURL'
             const studentData = {
                 studentId: result.studentId,
                 studentName: result.studentName,
                 email: result.email,
-                class: result.class || '',
-                school: result.school || '',
+                class: result.class || result.className || '',
+                school: result.school || result.schoolName || '',
                 gender: result.gender || '',
                 contactType: result.contactType || '',
                 contactNumber: result.contactNumber || '',
                 role: result.role || 'student',
                 registrationDate: result.registrationDate || '',
-                profilePhotoURL: result.profilePhotoURL || '',
+                profilePhotoURL: result.profilePhotoURL || result.profileImageUrl || '',
                 fetchedAt: Date.now()
             };
             localStorage.setItem('grammarhub_student_data', JSON.stringify(studentData));

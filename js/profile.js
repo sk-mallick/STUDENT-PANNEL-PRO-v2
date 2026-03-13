@@ -5,7 +5,7 @@
 
 import { Progress } from './progress.js';
 import { checkAuth, logout } from './auth-guard.js';
-import { SUBJECTS, LEVEL_ORDER as LEVELS, escapeHTML } from './app.js';
+import { SUBJECTS, LEVEL_ORDER as LEVELS, escapeHTML, formatDisplayDateTime } from './app.js';
 
 // ── Storage keys (V2) ───────────────────────────────────────────
 const STUDENT_DATA_KEY = 'grammarhub_student_data';
@@ -157,9 +157,7 @@ async function _renderProfile() {
         if (entry.timestamp && entry.timestamp < earliest) earliest = entry.timestamp;
     });
     if (earliest < Infinity) {
-        _set('profile-joined', new Date(earliest).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric'
-        }));
+        _set('profile-joined', formatDisplayDateTime(earliest, { includeTime: false }));
     }
 
     // ── Overall Performance ─────────────────────────────────────
@@ -270,6 +268,7 @@ async function _renderProfile() {
             const statusClasses = passed
                 ? 'bg-emerald-950/50 text-emerald-400 border-emerald-900/50'
                 : 'bg-orange-950/50 text-orange-400 border-orange-900/50';
+            const activityDate = r.date ? esc(formatDisplayDateTime(r.date, { includeTime: true })) : '';
             return `
             <div class="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-slate-900 border border-slate-800
                         rounded-xl shadow-sm animate-enter hover:border-slate-700/80 transition-all"
@@ -287,7 +286,7 @@ async function _renderProfile() {
                         <span class="text-slate-400">${esc(r.level)}</span>
                         <span class="opacity-30">•</span>
                         <span>Set ${esc(r.set)}</span>
-                        ${r.date ? `<span class="opacity-30">•</span><span>${esc(r.date)}</span>` : ''}
+                        ${activityDate ? `<span class="opacity-30">•</span><span>${activityDate}</span>` : ''}
                     </div>
                 </div>
                 <span class="shrink-0 px-2 py-0.5 rounded text-[8px] sm:text-[9px] font-black uppercase
